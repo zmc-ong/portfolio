@@ -30,6 +30,11 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background: var(--bg-white);
+    background-color: #fafafa;
+    background-image: 
+        linear-gradient(#e8ecf1 1px, transparent 1px),
+        linear-gradient(90deg, #e8ecf1 1px, transparent 1px);
+    background-size: 40px 40px;
 }
 
 /* ===== NAVIGATION ===== */
@@ -185,6 +190,14 @@ section:last-of-type::after {
     margin-bottom: 3rem;
     color: var(--text-dark);
     position: relative;
+}
+
+.section-title::before {
+    content: '//';
+    font-family: monospace;
+    color: var(--accent);
+    margin-right: 0.5rem;
+    font-weight: normal;
 }
 
 .section-title::after {
