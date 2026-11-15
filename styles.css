@@ -272,17 +272,6 @@ section {
     transition: all 0.2s ease;
 }
 
-.project-tech span[data-tech="java"] { background: #f89820; color: white; }
-.project-tech span[data-tech="python"] { background: #3776AB; color: white; }
-.project-tech span[data-tech="javascript"] { background: #F7DF1E; color: #333; }
-.project-tech span[data-tech="htmlcss"] { background: #E44D26; color: white; }
-.project-tech span[data-tech="php"] { background: #777BB4; color: white; }
-.project-tech span[data-tech="mysql"] { background: #4479A1; color: white; }
-.project-tech span[data-tech="react"] { background: #61DAFB; color: #333; }
-.project-tech span[data-tech="flutter"] { background: #02569B; color: white; }
-.project-tech span[data-tech="swing"] { background: #5B8D4E; color: white; }
-.project-tech span[data-tech="json"] { background: #000000; color: white; }
-
 /* ===== SKILLS ===== */
 .skills-grid {
     display: grid;
