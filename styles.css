@@ -156,6 +156,12 @@ body {
     opacity: 0.9;
 }
 
+.project-tech span,
+.hero-status,
+.footer-extra {
+    font-family: 'Courier New', Courier, monospace;
+}
+
 /* ===== SECTIONS ===== */
 .container {
     max-width: 1200px;
