@@ -199,6 +199,25 @@ section {
 }
 
 /* ===== PROJECTS ===== */
+.project-category {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin: 2.5rem 0 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+}
+
+.project-why {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    font-style: italic;
+    margin: 0.8rem 0;
+    padding: 0.5rem 0;
+    border-top: 1px dashed var(--bg-light);
+    border-bottom: 1px dashed var(--bg-light);
+}
+
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -368,6 +387,28 @@ section {
     margin-bottom: 2rem;
     font-size: 1.1rem;
     color: var(--text-gray);
+}
+
+.learning {
+    background: var(--bg-light);
+    padding: 60px 0;
+}
+
+.learning-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.learning-list span {
+    background: var(--bg-white);
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--accent);
 }
 
 /* ===== BUTTONS ===== */
