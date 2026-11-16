@@ -109,7 +109,6 @@ body {
     overflow: hidden;
 }
 
-/* Subtle glow behind the terminal */
 .hero::before {
     content: '';
     position: absolute;
@@ -127,7 +126,7 @@ body {
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 760px;
+    max-width: 700px; /* Reduced from 760px for better proportion */
 }
 
 /* Terminal Window */
@@ -135,14 +134,13 @@ body {
     background: #1e1e1e;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08);
     text-align: left;
 }
 
 .terminal-header {
     background: #2d2d2d;
-    padding: 0.7rem 1rem;
+    padding: 0.75rem 1rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -164,20 +162,21 @@ body {
     margin-left: auto;
     font-family: 'Courier New', monospace;
     font-size: 0.8rem;
-    color: #888;
+    color: #666;
 }
 
 .terminal-body {
-    padding: 1.8rem 2rem;
+    padding: 2rem 2.2rem;
     font-family: 'Courier New', monospace;
-    font-size: 0.95rem;
-    line-height: 1.8;
+    font-size: 0.9rem;
+    line-height: 1.6;
     color: #d4d4d4;
 }
 
 .terminal-line {
-    margin-top: 0.8rem;
-    color: #d4d4d4;
+    margin-top: 1.2rem;
+    color: #e0e0e0;
+    font-weight: bold;
 }
 
 .terminal-line:first-child {
@@ -186,19 +185,98 @@ body {
 
 .prompt {
     color: #6ab0f3;
-    margin-right: 0.5rem;
+    margin-right: 0.6rem;
 }
 
-.terminal-output {
+/* --- Typing Animation Setup --- */
+.terminal-output,
+.terminal-processing {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    padding-left: 1.2rem;
+    margin-top: 0.3rem;
+    
+    /* Base animation - 0 delay for immediate start on first line */
+    animation: typeText 0.8s steps(40, end) forwards;
+    animation-fill-mode: both;
+}
+
+.terminal-output::before,
+.terminal-processing::before {
+    content: attr(data-text);
+}
+
+.terminal-output::before {
     color: #9cdcfe;
-    margin: 0.2rem 0 0 1.5rem;
-    opacity: 0.95;
+    opacity: 0.9;
 }
 
-/* Blinking cursor */
+.terminal-processing {
+    font-style: italic;
+    color: #888;
+}
+
+.terminal-processing::before {
+    color: #888;
+    content: attr(data-text);
+    font-style: italic;
+}
+
+/* --- Animation Keyframes --- */
+@keyframes typeText {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; width: 100%; }
+}
+
+/* --- Staggered Delays --- */
+.line-delay-0 {
+    animation: typeText 0.8s steps(40, end) 0s forwards;
+}
+
+.line-delay-1 {
+    animation: typeText 0.8s steps(40, end) 1.5s forwards;
+}
+
+.line-delay-2 {
+    animation: typeText 0.8s steps(40, end) 2.5s forwards;
+}
+
+.line-delay-3 {
+    animation: typeText 0.8s steps(40, end) 4s forwards;
+}
+
+/* Processing Text Animation (Runs quickly, then fades) */
+.terminal-processing {
+    animation: typeText 0.4s steps(20, end) 0s forwards, 
+               fadeOut 0.2s ease 0.6s forwards;
+}
+
+.terminal-processing:nth-of-type(1) {
+    animation-delay: 0.8s, 1.4s; 
+}
+
+.terminal-processing:nth-of-type(2) {
+    animation-delay: 3.2s, 3.8s; 
+}
+
+/* --- Cursor --- */
 .cursor {
-    color: #6ab0f3;
-    animation: blink 1s step-end infinite;
+    display: inline-block;
+    width: 9px;
+    height: 16px;
+    background-color: #6ab0f3;
+    vertical-align: middle;
+    margin-left: 2px;
+    
+    /* Delayed to ensure all text is done */
+    opacity: 0;
+    animation: blink 1s step-end infinite 5s;
 }
 
 @keyframes blink {
@@ -210,7 +288,7 @@ body {
 .hero-actions {
     display: flex;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -635,31 +713,37 @@ footer p {
     .hero {
         padding: 100px 5% 60px;
     }
-
+    
     .terminal-body {
-        padding: 1.2rem 1rem;
+        padding: 1.5rem 1rem;
         font-size: 0.8rem;
-        line-height: 1.7;
     }
-
-    .terminal-output {
-        margin-left: 1rem;
+    
+    .terminal-output,
+    .terminal-processing {
+        white-space: normal;
+        width: auto;
+        animation: none;
     }
-
+    
+    .terminal-processing {
+        display: none; 
+    }
+    
     .terminal-title {
         display: none;
     }
-
+    
     .hero-actions {
         flex-direction: column;
         align-items: stretch;
     }
-
+    
     .hero-actions .btn {
         width: 100%;
         text-align: center;
     }
-
+    
     .hero-container p {
         font-size: 1rem;
     }
