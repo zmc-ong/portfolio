@@ -358,49 +358,28 @@ section:last-of-type::after {
     background: var(--bg-light);
 }
 
-.cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+.timeline {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    border-left: 2px solid var(--accent);
 }
 
-.cert-card {
-    background: var(--bg-white);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.3s ease;
-    border-left: 4px solid var(--accent);
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
 }
 
-.cert-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-}
-
-.cert-card h3 {
-    color: var(--text-dark);
-    font-size: 1.2rem;
-    margin-bottom: 0.3rem;
-}
-
-.cert-issuer {
-    color: var(--accent);
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.cert-date {
-    color: var(--text-gray);
-    font-size: 0.85rem;
-    margin-bottom: 0.8rem;
-}
-
-.cert-desc {
-    color: var(--text-gray);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.4rem;
+    top: 0.3rem;
+    width: 12px;
+    height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
 }
 
 /* ===== RESUME ===== */
